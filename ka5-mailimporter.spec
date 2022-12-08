@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.08.3
+%define		kdeappsver	22.12.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		mailimporter
 Summary:	mailimporter
 Name:		ka5-%{kaname}
-Version:	22.08.3
+Version:	22.12.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	387c998ed6137cb9e67e27291e8e68b9
+# Source0-md5:	5295a8055f2c1b554ae401d9aaabe410
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
@@ -24,6 +24,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	ka5-akonadi-devel >= %{kdeappsver}
 BuildRequires:	ka5-akonadi-mime-devel >= %{kdeappsver}
 BuildRequires:	ka5-kmime-devel >= %{kdeappsver}
+BuildRequires:	ka5-pimcommon-devel >= %{kdeappsver}
 BuildRequires:	ka5-libkdepim-devel >= %{kdeappsver}
 BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
 BuildRequires:	kf5-karchive-devel >= %{kframever}
