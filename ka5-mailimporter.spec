@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.12.3
+%define		kdeappsver	23.04.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		mailimporter
 Summary:	mailimporter
 Name:		ka5-%{kaname}
-Version:	22.12.3
-Release:	3
+Version:	23.04.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	45c958dc8328da6f68140e54e2c44c03
+# Source0-md5:	ae6eb5aac6561a44f5c5aae6c5042221
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
@@ -24,8 +24,8 @@ BuildRequires:	gettext-devel
 BuildRequires:	ka5-akonadi-devel >= %{kdeappsver}
 BuildRequires:	ka5-akonadi-mime-devel >= %{kdeappsver}
 BuildRequires:	ka5-kmime-devel >= %{kdeappsver}
-BuildRequires:	ka5-pimcommon-devel >= %{kdeappsver}
 BuildRequires:	ka5-libkdepim-devel >= %{kdeappsver}
+BuildRequires:	ka5-pimcommon-devel >= %{kdeappsver}
 BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
 BuildRequires:	kf5-karchive-devel >= %{kframever}
 BuildRequires:	kf5-kconfig-devel >= %{kframever}
@@ -92,20 +92,22 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-%ghost %{_libdir}/libKF5MailImporter.so.5
-%attr(755,root,root) %{_libdir}/libKF5MailImporter.so.5.*.*
-%ghost %{_libdir}/libKF5MailImporterAkonadi.so.5
-%attr(755,root,root) %{_libdir}/libKF5MailImporterAkonadi.so.5.*.*
 %{_datadir}/qlogging-categories5/mailimporter.categories
 %{_datadir}/qlogging-categories5/mailimporter.renamecategories
+%ghost %{_libdir}/libKPim5MailImporter.so.5
+%attr(755,root,root) %{_libdir}/libKPim5MailImporter.so.*.*.*
+%ghost %{_libdir}/libKPim5MailImporterAkonadi.so.5
+%attr(755,root,root) %{_libdir}/libKPim5MailImporterAkonadi.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/KF5/MailImporter
-%{_includedir}/KF5/MailImporterAkonadi
-%{_libdir}/cmake/KF5MailImporter
-%{_libdir}/cmake/KF5MailImporterAkonadi
-%{_libdir}/libKF5MailImporter.so
-%{_libdir}/libKF5MailImporterAkonadi.so
 %{_libdir}/qt5/mkspecs/modules/qt_MailImporter.pri
 %{_libdir}/qt5/mkspecs/modules/qt_MailImporterAkonadi.pri
+%{_includedir}/KPim5/MailImporter
+%{_includedir}/KPim5/MailImporterAkonadi
+%{_libdir}/cmake/KF5MailImporter
+%{_libdir}/cmake/KF5MailImporterAkonadi
+%{_libdir}/cmake/KPim5MailImporter
+%{_libdir}/cmake/KPim5MailImporterAkonadi
+%{_libdir}/libKPim5MailImporter.so
+%{_libdir}/libKPim5MailImporterAkonadi.so
