@@ -1,24 +1,24 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	23.08.4
+%define		kdeappsver	24.01.95
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		mailimporter
 Summary:	mailimporter
 Name:		ka5-%{kaname}
-Version:	23.08.4
-Release:	1
+Version:	24.01.95
+Release:	0.1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
-Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	87615b58b552a4d18af911981660ee58
+Source0:	https://download.kde.org/unstable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	1205db4dffed59eb7d5d6350e305b5be
 URL:		http://www.kde.org/
-BuildRequires:	Qt5Core-devel >= %{qtver}
-BuildRequires:	Qt5Gui-devel >= 5.11.1
-BuildRequires:	Qt5Test-devel
-BuildRequires:	Qt5Widgets-devel
-BuildRequires:	Qt5Xml-devel
+BuildRequires:	Qt6Core-devel >= %{qtver}
+BuildRequires:	Qt6Gui-devel >= 5.11.1
+BuildRequires:	Qt6Test-devel
+BuildRequires:	Qt6Widgets-devel
+BuildRequires:	Qt6Xml-devel
 BuildRequires:	cmake >= 3.20
 BuildRequires:	gettext-devel
 BuildRequires:	ka5-akonadi-devel >= %{kdeappsver}
@@ -26,13 +26,13 @@ BuildRequires:	ka5-akonadi-mime-devel >= %{kdeappsver}
 BuildRequires:	ka5-kmime-devel >= %{kdeappsver}
 BuildRequires:	ka5-libkdepim-devel >= %{kdeappsver}
 BuildRequires:	ka5-pimcommon-devel >= %{kdeappsver}
-BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
-BuildRequires:	kf5-karchive-devel >= %{kframever}
-BuildRequires:	kf5-kconfig-devel >= %{kframever}
-BuildRequires:	kf5-kcoreaddons-devel >= %{kframever}
-BuildRequires:	kf5-ki18n-devel >= %{kframever}
+BuildRequires:	kf6-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf6-karchive-devel >= %{kframever}
+BuildRequires:	kf6-kconfig-devel >= %{kframever}
+BuildRequires:	kf6-kcoreaddons-devel >= %{kframever}
+BuildRequires:	kf6-ki18n-devel >= %{kframever}
 BuildRequires:	ninja
-BuildRequires:	qt5-build >= %{qtver}
+BuildRequires:	qt6-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
@@ -90,20 +90,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-%{_datadir}/qlogging-categories5/mailimporter.categories
-%{_datadir}/qlogging-categories5/mailimporter.renamecategories
-%ghost %{_libdir}/libKPim5MailImporter.so.5
-%attr(755,root,root) %{_libdir}/libKPim5MailImporter.so.*.*.*
-%ghost %{_libdir}/libKPim5MailImporterAkonadi.so.5
-%attr(755,root,root) %{_libdir}/libKPim5MailImporterAkonadi.so.*.*.*
+%attr(755,root,root) %{_libdir}/libKPim6MailImporter.so.*.*
+%ghost %{_libdir}/libKPim6MailImporter.so.6
+%attr(755,root,root) %{_libdir}/libKPim6MailImporterAkonadi.so.*.*
+%ghost %{_libdir}/libKPim6MailImporterAkonadi.so.6
+%{_datadir}/qlogging-categories6/mailimporter.categories
+%{_datadir}/qlogging-categories6/mailimporter.renamecategories
 
 %files devel
 %defattr(644,root,root,755)
-%{_libdir}/qt5/mkspecs/modules/qt_MailImporter.pri
-%{_libdir}/qt5/mkspecs/modules/qt_MailImporterAkonadi.pri
-%{_includedir}/KPim5/MailImporter
-%{_includedir}/KPim5/MailImporterAkonadi
-%{_libdir}/cmake/KPim5MailImporter
-%{_libdir}/cmake/KPim5MailImporterAkonadi
-%{_libdir}/libKPim5MailImporter.so
-%{_libdir}/libKPim5MailImporterAkonadi.so
+%{_includedir}/KPim6/MailImporter
+%{_includedir}/KPim6/MailImporterAkonadi
+%{_libdir}/cmake/KPim6MailImporter
+%{_libdir}/cmake/KPim6MailImporterAkonadi
+%{_libdir}/libKPim6MailImporter.so
+%{_libdir}/libKPim6MailImporterAkonadi.so
